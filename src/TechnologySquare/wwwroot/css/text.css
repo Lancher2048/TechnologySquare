@@ -1,0 +1,26 @@
+﻿
+.divcss5{
+    text-align:center;
+
+}
+
+.li_style {
+     text-align:center;
+    list-style-type:none;
+
+}
+
+
+.nobdr-btns{
+	padding-top: 20px;
+}
+
+.addcart{
+	background: #fd532d;
+	padding: 0px 60px;
+	border-radius: 4px;
+	color: #FFFFFF;
+	margin-right: 15px;
+	font-size:16px;
+	line-height: 40px;
+}

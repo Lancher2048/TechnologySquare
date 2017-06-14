@@ -4,73 +4,19 @@
     Layout = "_Layout";
 }
 
-<link href="~/css/De.css" rel="stylesheet" type="text/css" />
-<link rel="stylesheet" type="text./css" href="~/css/Detail.css" />
-<script type="text/javascript">
-$(function(){
-$(".subNav").click(function(){
-			$(this).toggleClass("currentDd").siblings(".subNav").removeClass("currentDd")
-			$(this).toggleClass("currentDt").siblings(".subNav").removeClass("currentDt")
 
-			// 修改数字控制速度， slideUp(500)控制卷起速度
-			$(this).next(".navContent").slideToggle(500).siblings(".navContent").slideUp(500);
-	})
-})
-</script>
+<link href="~/css/Detail.css" rel="stylesheet" type="text/css" />
 
 
 <body>
 
     <table width="1194" align="center">
         <tr>
-            <th height="95"> </th>
+            <th height="68"> </th>
         </tr>
     </table>
     <hr>
-    <div class='card-holder'>
-        <div class='card-wrapper'>
-            <a href='#'>
-                <div class='card bg-01'>
-                    <span class='card-content'>索尼</span>
-                </div>
-            </a>
-        </div>
-        <div class='card-wrapper'>
-            <a href='#'>
-                <div class='card bg-02'>
-                    <span class='card-content'>三星</span>
-                </div>
-            </a>
-        </div>
-        <div class='card-wrapper'>
-            <a href='#'>
-                <div class='card bg-03'>
-                    <span class='card-content'>苹果</span>
-                </div>
-            </a>
-        </div>
-        <div class='card-wrapper'>
-            <a href='#'>
-                <div class='card bg-04'>
-                    <span class='card-content'>中兴</span>
-                </div>
-            </a>
-        </div>
-        <div class='card-wrapper'>
-            <a href='#'>
-                <div class='card bg-05'>
-                    <span class='card-content'>华为</span>
-                </div>
-            </a>
-        </div>
-        <div class='card-wrapper'>
-            <a href='#'>
-                <div class='card bg-06'>
-                    <span class='card-content'>小米</span>
-                </div>
-            </a>
-        </div>
-    </div>
+
 
     <div style="text-align:center;clear:both;">
         <script src="/gg_bd_ad_720x90.js" type="text/javascript"></script>
@@ -84,58 +30,35 @@ $(".subNav").click(function(){
             <td width="238" height="924" valign="top">
                 <!--侧边导航栏-->
                 <table width="238" height="742" border="0">
+                    <tr><td height="140"></td></tr>
                     <tr>
                         <th width="232" height="431">
-
-
-                            <div class="subNavBox">
-                                <div class="subNav currentDd currentDt">移动手机</div>
-                                <ul class="navContent " style="display:block">
-                                    <li><a href="#">苹果</a></li>
-                                    <li><a href="#">小米</a></li>
-                                    <li><a href="#">索尼</a></li>
-                                    <li><a href="#">华为</a></li>
-                                </ul>
-                                <div class="subNav">智能家居</div>
-                                <ul class="navContent">
-                                    <li><a href="#">路由器</a></li>
-                                    <li><a href="#">电视盒子</a></li>
-                                    <li><a href="#">随行WiFi</a></li>
-                                    <li><a href="#">电力猫</a></li>
-                                </ul>
-                                <div class="subNav">专属配件</div>
-                                <ul class="navContent">
-                                    <li><a href="#">耳机</a></li>
-                                    <li><a href="#">音响</a></li>
-                                    <li><a href="#">电源/充电器</a></li>
-                                </ul>
-                                <div class="subNav">平板&穿戴</div>
-                                <ul class="navContent">
-                                    <li><a href="#">平板电脑</a></li>
-                                    <li><a href="#">智能手环</a></li>
-                                    <li><a href="#">智能手表</a></li>
-                                    <li><a href="#">VR设备</a></li>
-                                </ul>
-                            </div>
-
-
-
-
-
+                            <div class="divcss5"><p>移动手机</p></div>
+                            <ul>
+                                <li class="li_style"><a href='~/Home/Browse?typeId=1&typeName=苹果手机'>苹果手机</a></li>
+                                <li class="li_style"><a href='~/Home/Browse?typeId=2&typeName=微软手机'>微软手机</a></li>
+                                <li class="li_style"><a href='~/Home/Browse?typeId=3&typeName=小米手机'>小米手机</a></li>
+                            </ul>
+                            <div class="divcss5"><p>平板电脑</p></div>
+                            <ul>
+                                <li class="li_style"><a href="~/Home/Browse?typeId=4&typeName=苹果ipad">苹果ipad</a></li>
+                                <li class="li_style"><a href="~/Home/Browse?typeId=5&typeName=华为平板">华为</a></li>
+                                <li class="li_style"><a href="~/Home/Browse?typeId=6&typeName=小米平板">小米</a></li>
+                            </ul>
+                            <div class="divcss5"><p>周边配件</p></div>
+                            <ul>
+                                <li class="li_style"><a href="~/Home/Browse?typeId=8&typeName=耳机">耳机/音响</a></li>
+                                <li class="li_style"><a href="~/Home/Browse?typeId=9&typeName=手环">手环</a></li>
+                                <li class="li_style"><a href="~/Home/Browse?typeId=7&typeName=移动电源">移动电源</a></li>
+                            </ul>
                         </th>
                     </tr>
-                    <tr>
-                        <th height="100">&nbsp;</th>
-                    </tr>
-                    <tr>
-                        <th height="100">&nbsp;</th>
-                    </tr>
-                    <tr>
-                        <th height="100">&nbsp;</th>
-                    </tr>
+
                 </table>
 
             </td>
+
+            <td width="20"></td>
             <td width="931" valign="top">
 
                 <table width="887">
@@ -148,16 +71,17 @@ $(".subNav").click(function(){
 
                     <tr>
                         <!--商品图片-->
-                        <th width="273" height="455">
+                        <th width="300" height="455">
                             <img src="~/images/@Model.p.Product_Img">
                         </th>
+
 
                         <th width="602">
                             <!--商品简易描述-->
                             <table width="581">
                                 <!--商品名字-->
                                 <tr>
-                                    <th width="573" height="52"><font size="6"><div class="sss">@Model.p.Productname</div></font></th>
+                                    <th width="573" height="52"><font size="6"><div class="divcss5">@Model.p.Productname</div></font></th>
                                 </tr>
 
                                 <!--商品价格-->
@@ -202,12 +126,6 @@ $(".subNav").click(function(){
                                 <tr>
                                     <td height="34">市场价格：@Model.p.Price</td>
                                 </tr>
-                                <tr>
-                                    <td height="38"><p class="vip">普通会员价：<span>5799</span></p></td>
-                                </tr>
-                                <tr>
-                                    <td height="38"><p class="vip">VIP 会员价：<span>5399</span></p></td>
-                                </tr>
 
                                 <!--承诺-->
                                 <tr>
@@ -217,11 +135,12 @@ $(".subNav").click(function(){
                                         </div>
                                     </th>
                                 </tr>
+                                <tr><td height="20"></td></tr>
                                 <tr>
                                     <th>
                                         <div class="nobdr-btns">
-                                            <button class="addcart hu"><img src="~/images/img_Detail/shop.png" width="25" height="25" />加入购物车</button>
-                                            <button class="addcart yh"><img src="~/images/img_Detail/ht.png" width="25" height="25" />收藏此商品</button>
+                                            <button class="addcart"><img src="~/images/img_Detail/shop.png" width="25" height="25" />加入购物车</button>
+                                            <button class="addcart"><img src="~/images/img_Detail/ht.png" width="25" height="25" />收藏此商品</button>
                                         </div>
                                     </th>
                                 </tr>
@@ -238,8 +157,10 @@ $(".subNav").click(function(){
                                 <tr>
                                     <td width="276" height="136">
 
-                                        <div class="divcss5"><img src="~/images/img_Detail/img 2/a-1.png" />
-                                        <p>品牌: Apple/苹果<br>Apple型号: iPhone 7
+                                        <div class="divcss5">
+                                            <img src="~/images/img_Detail/img 2/a-1.png" />
+                                            <p>
+                                                品牌: 不详<br>Apple型号: 不详
                                             </p>
                                         </div>
                                     </td>
@@ -248,33 +169,34 @@ $(".subNav").click(function(){
 
                                         <div class="divcss5">
                                             <img align="middle" src="~/images/img_Detail/img 2/a-2.png">
-                                            <p>分辨率	1334 x 750<br>像素分辨率 326 ppi</p>
+                                            <p>分辨率	不详<br>像素分辨率 不详</p>
                                         </div>
                                     </td>
                                     <td width="312">
 
-                                        <div class="divcss5"><img align="middle" src="~/images/img_Detail/img 2/a-3.png"><p>网络类型: 4G+全网通<br>网络模式: 蜂窝网络和无线连接</p></div>
+                                        <div class="divcss5"><img align="middle" src="~/images/img_Detail/img 2/a-3.png"><p>网络类型: 未知<br>网络模式: 未知</p></div>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td height="171">
 
-                                        <div class="divcss5"><img align="middle" src="~/images/img_Detail/img 2/b-1.png">             
-                                         <p>核心数: 不详</p></div>
+                                        <div class="divcss5">
+                                            <img align="middle" src="~/images/img_Detail/img 2/b-1.png">
+                                            <p>核心数: 不详</p>
+                                        </div>
                                     </td>
                                     <td>
 
                                         <div class="divcss5">
                                             <img align="middle" src="~/images/img_Detail/img 2/b-2.png"><p>
                                                 运行内存RAM: 不详<br>
-                                                存储容量:<br>
-                                                32GB 128GB 256GB
+                                                存储容量:未知
                                             </p>
                                         </div>
                                     </td>
                                     <td>
 
-                                        <div class="divcss5"><img align="middle" src="~/images/img_Detail/img 2/b-3.png"><p>前置摄像头: 1200 万像素<br>后置摄像头: 1200 万像素</p></div>
+                                        <div class="divcss5"><img align="middle" src="~/images/img_Detail/img 2/b-3.png"><p>前置摄像头: 未知<br>后置摄像头: 未知</p></div>
                                     </td>
                                 </tr>
                             </table>
@@ -285,38 +207,11 @@ $(".subNav").click(function(){
                         </td>
                     </tr>
 
-
-                    <tr>
-                        <th height="303" colspan="2">
-                            <img src="~/images/img_Detail/苹果2.jpg" height="457">
-                            <img src="~/images/img_Detail/苹果3.jpg" height="425">
-                            <img src="~/images/img_Detail/苹果4.jpg" height="1557">
-                            <img src="~/images/img_Detail/苹果5.jpg" height="1336">
-                        </th>
-                    </tr>
                 </table>
 
             </td>
         </tr>
     </table>
-
-    <!--底部导航栏-->
-    <div class="nav">
-        <ul>
-            <li>
-                <a href="#"><span><img src="~/images/img_Detail/collect.png" height="20"></span><span>收藏夹</span></a>
-            </li>
-            <li style="position:relative;">
-                <a href="#"><span><img src="~/images/img_Detail/buy.png" height="20"></span><span>购买记录</span></a>
-            </li>
-            <li>
-                <a href="#"><span><img src="~/images/img_Detail/box.png" height="20"></span><span>购物车</span></a>
-            </li>
-            <li>
-                <a href="#"><span><img src="~/images/img_Detail/human.png" height="20"></span><span>个人中心</span></a>
-            </li>
-        </ul>
-    </div>
 
     <script src="~/js/Detail.js" type="text/javascript"></script>
     <style type="text/css">

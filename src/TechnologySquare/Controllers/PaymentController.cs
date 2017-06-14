@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using TechnologySquare.Models;
 using TechnologySquare.Infrastructure;
-
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
@@ -18,10 +18,13 @@ namespace TechnologySquare.Controllers
 {
     public class PaymentController : Controller
     {
+        private IHostingEnvironment host = null;
+
         private readonly TechnologySquareContext db;
-        public PaymentController(TechnologySquareContext _db)
+        public PaymentController(TechnologySquareContext _db, IHostingEnvironment _host)
         {
             db = _db;
+            host = _host;
         }
 
 
@@ -35,7 +38,7 @@ namespace TechnologySquare.Controllers
             PaymentType paymentMethod = db.PaymentType.Single(m => m.ObjId == paymentTypeObjId);
 
 
-            if (RemotePost.PaymentVerify(Request, out merId, out amt, out merTransId, out transId, out transTime) && merId == "Team03")
+            if (RemotePost.PaymentVerify(Request, host.WebRootPath, out merId, out amt, out merTransId, out transId, out transTime) && merId == "Team03")
             {
                 Payment pay = db.Payment.Single(m => m.ObjId == int.Parse(merTransId));
                 Orders[] orders = db.Orders.Where(m => m.OrderState == 0).ToArray<Orders>();/*ThePayment == int.Parse(merTransId)).ToArray<Orders>();*/

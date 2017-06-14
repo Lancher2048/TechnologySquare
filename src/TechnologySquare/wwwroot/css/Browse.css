@@ -1,0 +1,44 @@
+﻿
+.p {
+    text-align:center;
+    font-size:30px;
+    font-weight:900;
+}
+
+
+.d {
+    text-align:center;
+    font-size:20px;
+}
+
+
+.nobdr-btns{
+	padding-top: 10px;
+    text-align:center;
+}
+
+.addcart{
+	background: #fd532d;
+	padding: 10px 70px;
+	border-radius: 4px;
+	color: #FFFFFF;
+	margin-right: 10px;
+	font-size:18px;
+	line-height: 70px;
+    padding-top:2px;
+    text-align:center;
+}
+
+.img {
+    max-width: 100%;
+    max-height: 100%;
+}
+.f {
+    width: 400px;
+    height: 400px;
+    border: 1px solid #000;
+    }
+.q {
+    font-size:20px;
+    font-weight:700;
+}

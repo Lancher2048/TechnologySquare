@@ -1,6 +1,5 @@
 ﻿@using Microsoft.AspNetCore.Http;
 @model TechnologySquare.Models.OrderViewModel
-
 @{
     ViewBag.Title = "订单确认";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -9,7 +8,6 @@
     //HttpRequest Request = ViewBag.Request as HttpRequest;
 
 }
-
 @section Scripts
 {
     <script>
@@ -28,8 +26,10 @@
                         var first = true;
                         //var name = document.getElementById("name_" + i).value.trim();
                         //document.getElementById("Conname_" + i).innerText = name;
-                        var address = document.getElementById("adress_" + i).value.trim();
-                            document.getElementById("custAddr_" + i).innerText = address;
+                        var address = document.getElementById("adress_").value.trim();
+                        document.getElementById("custAddr_").innerText = address;
+                        var mobile = document.getElementById("mobile_").value.trim();
+                        document.getElementById("custMobile").innerText = mobile;
                     }
                     if (err == "") {
                         document.getElementById("s2Valid").value = "true";
@@ -141,7 +141,6 @@
         }
     </script>
 }
-
 <style type="text/css">
     .font {
         font-size: large;
@@ -163,18 +162,17 @@
         display: inline;
     }
 </style>
-
 <div>
-
     <input id="curStep" type="hidden" value="step1" />
     <input id="s1Valid" name="s1Valid" type="hidden" value="false" />
     <input id="s2Valid" name="s2Valid" type="hidden" value="false" />
     <input id="s3Valid" name="s3Valid" type="hidden" value="false" />
     <form id="orderForm" action="~/Order" method="post">
+
         @*AntiForgery.GetHtml()*@
         <!--input id="orderQty" name="orderQty" type="hidden" value="@Model.orderQty" /-->
         @Html.HiddenFor(m => m.orderQty)
-        <table>
+        <table class="table table-hover" border="0">
             <tr style="width:100%">
                 <td id="leftSide" style="width:18%;text-align:left;vertical-align:top;">
                     <ol style="margin-top:60px">
@@ -187,14 +185,14 @@
                 <td id="contentPages" style="width:82%;text-align:center;">
                     <div id="contactInfo" style="display:block;">
                         <h3>确认您的联系信息</h3>
-                        <table style="width:100%;font:14px;">
+                        <table style="width:100%;font:14px;" border="0" class="table table-hover">
                             <tr>
                                 <td class="right">@Html.LabelFor(m => m.curCustomer.MobilePhone)</td>
                                 <td class="left">@Html.TextBoxFor(m => m.curCustomer.MobilePhone, new { id = "txtMPhone" })</td>
                             </tr>
                         </table>
                         @Html.HiddenFor(m => m.curCustomer.ObjId)
-                        <input id="step1next" type="button" value="下一步" onclick="javascript: step2();" />
+                        <input id="step1next" type="button" value="下一步" onclick="javascript: step2();">
                     </div>
                     <div id="receiverInfo" style="display:none;">
                         <h3>输入订单信息</h3>
@@ -203,24 +201,28 @@
                                 <th>#</th>
                                 <th>收件人信息</th>
                                 <th>详细地址</th>
-                                <th>商品信息</th>
+
+                            </tr>
+
+                            <tr>
+                                <td>订单<span>@orderNo</span></td>
+                                <td style="text-align:left;width:350px">
+                                    姓名：<!--@*input id="name_@orderNo" name="name_@orderNo" type="text" class="left"value="@Request.Form["name_"+orderNo]" /*@-->
+                                    <p>@Model.curCustomer.Conname</p>
+                                    移动电话：<input id="mobile_" name="mobile_" value="@Model.curCustomer.MobilePhone" type="text" class="left" /><br />
+                                </td>
+                                <td style="width:250px"><input id="adress_" name="adress_" style="width:230px;height:100px;"></td>
                             </tr>
                             @foreach (var cartItem in Model.orders)
                             {
-                                <tr>
-                                    <td>订单<span>@orderNo</span></td>
-                                    <td style="text-align:left;width:350px">
-                                        姓名：<!--@*input id="name_@orderNo" name="name_@orderNo" type="text" class="left"value="@Request.Form["name_"+orderNo]" /*@-->
-                                        <input id="name_@orderNo" name="name_@orderNo" type="text" class="left" />@Model.curCustomer.Conname<br />
-                                        移动电话：<input id="mobile_@orderNo" name="mobile_@orderNo" type="text" class="left" /><br />
-                                    </td>
-                                    <td style="width:250px"><input id="adress_@orderNo" name="adress_@orderNo" style="width:230px;height:220px;"></td>
-                                    <td style="text-align:left;width:300px;">
-                                        商品名称：<span>@Model.orders[orderNo].productName</span><br />
-                                        市场价格：<span>@Model.orders[orderNo].price</span><br />
-                                        <input type="hidden" name="productId_@orderNo" value="@Model.orders[orderNo].theProduct" />
-                                    </td>
-                                </tr>
+                                @*<tr>
+
+                                        <td style="text-align:left;width:300px;">
+                                            商品名称：<span>@Model.orders[orderNo].productName</span><br />
+                                            市场价格：<span>@Model.orders[orderNo].price</span><br />
+                                            <input type="hidden" name="productId_@orderNo" value="@Model.orders[orderNo].theProduct" />
+                                        </td>
+                                    </tr>*@
                                 orderNo++;
                             }
                         </table>
@@ -234,19 +236,18 @@
                         <input type="hidden" id="paymentType" name="paymentType" value="-1" />
                         @foreach (var p in ViewBag.payments)
                         {
-                            <span><input type="radio" name="pType" id="pt_@p.ObjId" value="@p.ObjId" title="@p.TypeName" onclick="javascript:paymentTypeSelected(this);" /><a href="javascript:selePaymentType(@p.ObjId,'@p.TypeName');"></a></span><br />
+                            <span><input type="radio" name="pType" id="pt_@p.ObjId" value="@p.ObjId" title="@p.TypeName" onclick="javascript:paymentTypeSelected(this);" /><a href="javascript:selePaymentType(@p.ObjId,'@p.TypeName');"><img src="~/images/img_Index/zfb.png"></a></span><br />
                         }<br />
                         <input id="step3last" type="button" value="上一步" onclick="javascript: step2();" />
                         <input id="step3next" type="button" value="下一步" onclick="javascript: step4();" />
                     </div>
-
                     <div id="assureInfo" style="display:none;">
                         <h3>确认订单</h3>
                         <table border="1" style="width:100%;border: 1px solid black;text-align:left;border-width:1px;border-collapse:collapse;">
                             <tr>
                                 <td>
                                     客户联系信息：<br />
-                                    移动电话&nbsp;<span id="custMobile">@Model.curCustomer.MobilePhone</span>;&nbsp;&nbsp;&nbsp;&nbsp;用户名&nbsp;<sapn id="custname">@Model.curCustomer.UserName</sapn>;&nbsp;&nbsp;&nbsp;&nbsp;收件人姓名&nbsp;<sapn id="Conname">@Model.curCustomer.Conname</sapn>
+                                    移动电话&nbsp;<span id="custMobile"></span>;&nbsp;&nbsp;&nbsp;&nbsp;用户名&nbsp;<sapn id="custname">@Model.curCustomer.UserName</sapn>;&nbsp;&nbsp;&nbsp;&nbsp;收件人姓名&nbsp;<sapn id="Conname">@Model.curCustomer.Conname</sapn>
                                 </td>
                             </tr>
                             <tr>
@@ -256,7 +257,7 @@
                                         orderNo = 0;
                                         foreach (var order in Model.orders)
                                         {
-                                            <span>订单</span><span>@orderNo</span><span>&nbsp;&nbsp;&nbsp;&nbsp;地址：</span><span id="custAddr_@orderNo"></span><br />
+                                            <span>订单</span><span>@orderNo</span><span>&nbsp;&nbsp;&nbsp;&nbsp;地址：</span><span id="custAddr_"></span><br />
                                             <span>商品详情——商品名称：</span>@order.productName<span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span>购买价格：</span>@order.price<span>元</span><br /><br />
                                             orderNo++;
                                         }
@@ -275,6 +276,5 @@
                 </td>
             </tr>
         </table>
-
     </form>
 </div>

@@ -12,9 +12,9 @@ namespace TechnologySquare.Infrastructure
 {
     public class RemotePost
     {
-        public static string getCheckValue(string merchantId, string returnUrl, string paymentTypeObjId, string amtStr, string merTransId)
+        public static string getCheckValue(string rootPath, string merchantId, string returnUrl, string paymentTypeObjId, string amtStr, string merTransId)
         {
-            string xmlKey = File.ReadAllText("D:\\" + merchantId + ".xml");
+            string xmlKey = File.ReadAllText(rootPath+"\\" + merchantId + ".xml");
             RSAParameters PrvKeyInfo = RSAUtility.GetPrvKeyFromXmlString(xmlKey);
             RSACng rsa = new RSACng();
             rsa.ImportParameters(PrvKeyInfo);
@@ -25,7 +25,7 @@ namespace TechnologySquare.Infrastructure
             return Convert.ToBase64String(signedData);
         }
 
-        public static bool PaymentVerify(HttpRequest curRequest, out string merId, out string amt, out string merTransId, out string transId, out string transTime)
+        public static bool PaymentVerify(HttpRequest curRequest,string rootPahth, out string merId, out string amt, out string merTransId, out string transId, out string transTime)
         {
             merId = curRequest.Form["merId"].ToString();
             amt = curRequest.Form["amt"].ToString();
@@ -33,7 +33,7 @@ namespace TechnologySquare.Infrastructure
             transId = curRequest.Form["transId"].ToString();
             transTime = curRequest.Form["transTime"].ToString();
             string checkValue = curRequest.Form["checkValue"].ToString();
-            string PaymentPublicKey = File.ReadAllText("d:\\PaymentPublicKey.txt");
+            string PaymentPublicKey = File.ReadAllText(rootPahth+"\\PaymentPublicKey.txt");
             RSAParameters PubKeyInfo = RSAUtility.GetPubKeyFromXmlString(PaymentPublicKey);
             string orgString = merId + merTransId + amt + transId + transTime;
             ASCIIEncoding byteConverter = new ASCIIEncoding();

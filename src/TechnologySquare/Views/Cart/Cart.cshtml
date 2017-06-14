@@ -31,6 +31,12 @@
         else
             _doCancel(row);
     }
+    function _doStore(row, retUrl) {
+        window.location.assign("/Cart/storeCartRow/" + row + "?retUrl=" + retUrl);
+    }
+    function _doBuy(row, retUrl) {
+        window.location.assign("/Cart/buyFaviRow/" + row + "?retUrl=" + retUrl);
+    }
 
 
 </script>
@@ -59,7 +65,7 @@
                     <td>@cartItem.productName</td>
                     <td id="price_@cartRow" class="bold">@cartItem.price</td>
                     <td>
-                        @*<button type="button" class="btn btn-default btn-xs" onclick="deduce()">－</button>*@
+
                         <div id="edit_@cartRow" style="display:block;">
                             <a type="button" href="javascript:_doEdit(@cartRow)" style="color:#330099;">编辑</a>
                         </div>
@@ -69,28 +75,22 @@
                         </div>
                         <div id="qtyDsp_@cartRow" style="display:block;">@cartItem.amount</div>
                         <div id="qtyIn_@cartRow" style="display:none;"><input type="number" id="inQty_@cartRow" size="5" value="@cartItem.amount"></div>
-                        @*<button type="button" class="btn btn-default btn-xs" onclick="add()">＋</button>*@
+
+
+
                     </td>
-                    @*<td class="bold mark">{{item.price*item.quantity|number:2}}</td>*@
-                    <td>
-                        <a href="javascript:_doDelete(@cartRow)" type="button" class="btn btn-default btn-xs">删除</a>
-                    </td>
+                    <td><a href="javascript:_doDelete(@cartRow)" type="button" class="btn btn-default btn-xs">删除</a></td>
                 </tr>
                 cartRow++;
             }
         </table>
         }
-        @*<div class="empty" ng-show="!items.length">购物车空空，快去寻找宝贝</div>*@
+
         <div class="total">
-            @*已选商品：<span>{{getQuantites()}} </span>
-                合计：
-                <span class="mark" ng-show="getTotalAmount()<15000">{{getTotalAmount()|number:2}}</span>
-                <span class="mark" ng-show="getTotalAmount()>=15000">
-                    {{getTotalAmount()*discount|number:2}}<span class="btn btn-xs">(9折)</span>
-                    <span class="discount">({{getTotalAmount()|number:2}})</span>
-                </span>*@
+
             <a type="button" class="btn btn-primary btn-sm" href="/Order">结 算</a>
-            <button type="button" class="btn btn-primary btn-sm">退出购物车</button>
+            <a type="button" class="btn btn-primary btn-sm" href="@ViewBag.continueBuy">继续选购</a>
+            <a type="button" class="btn btn-primary btn-sm" href="/Home/Index">退出购物车</a>
         </div>
     </div>
     <script src="~/js/angular.js"></script>

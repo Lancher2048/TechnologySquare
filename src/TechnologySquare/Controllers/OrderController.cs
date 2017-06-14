@@ -9,6 +9,7 @@ using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.AspNetCore.Http;
 using TechnologySquare.Infrastructure;
 using Newtonsoft.Json;
+using Microsoft.AspNetCore.Hosting;
 
 // For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -16,10 +17,13 @@ namespace TechnologySquare.Controllers
 {
     public class OrderController : Controller
     {
+        private IHostingEnvironment host = null;
+
         private readonly TechnologySquareContext db;
-        public OrderController(TechnologySquareContext _db)
+        public OrderController(TechnologySquareContext _db, IHostingEnvironment _host)
         {
             db = _db;
+            host = _host;
         }
 
         // GET: /<controller>/
@@ -119,7 +123,7 @@ namespace TechnologySquare.Controllers
                 pri.PaymentTypeObjId = Request.Form["paymentType"];
                 pri.PostUrl = paymentUrl;
                 pri.ReturnUrl = "http://" + Request.Host + Url.Action("Index", "Payment");
-                pri.CheckValue = RemotePost.getCheckValue(pri.MerId, pri.ReturnUrl, pri.PaymentTypeObjId, pri.Amt, pri.MerTransId);
+                pri.CheckValue = RemotePost.getCheckValue(host.WebRootPath, pri.MerId, pri.ReturnUrl, pri.PaymentTypeObjId, pri.Amt, pri.MerTransId);
                 return View("PayRequest", pri);
             }
             else

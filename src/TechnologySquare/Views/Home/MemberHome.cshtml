@@ -97,26 +97,37 @@
         }
     </script>
 }
-@*<link rel="stylesheet" type="text/css" href="~/css/Manage.css" />
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-sm-3 col-md-2 sidebar">
-            <ul class="nav nav-sidebar">
-                <li class="active">会员中心 <span class="sr-only">(current)</span></li>
-                <li><a class="nav-sidebar" href="#new1">会员信息</a></li>
-                <li><a class="nav-sidebar" href="#new2">订单查询</a></li>
-                
-            </ul>
-         </div>*@
-        @*<div id="new1" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-            <h1 class="page-header">会员信息</h1>
+<link rel="stylesheet" type="text/css" href="~/css/Manage.css" />
+<div class="wrapper">
+
+    <article id="column-left">
+        <nav>
+            <dt><a id="grzx-hy" class="grzx-hy">会员中心</a></dt>
+
+            <dd><a class="nav-sidebar" href="#news1">会员信息</a></dd>
+            <dd><a class="nav-sidebar" href="#news2">订单查询</a></dd>
+
+        </nav>
+    </article>
+    <div class="grzx-tx">
+        <dt class="page-header">
+
             <img src="~/images/img_Manage/grzx.jpg" />
-            @*<table style="width: 100%; height: 688px;" >
-                <tr>
-                    <td style="width: 297px;vertical-align:top;">*@
-                        @*<h3>会员信息</h3>*@
-            <h2 class="sub-header"></h2>
-            <div class="table-responsive">
+        </dt>
+    </div>
+    @*<div id="new1" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+        <h1 class="page-header">会员信息</h1>
+        <img src="~/images/img_Manage/grzx.jpg" />
+        @*<table style="width: 100%; height: 688px;" >
+            <tr>
+                <td style="width: 297px;vertical-align:top;">*@
+    @*<h3>会员信息</h3>*@
+    <article id="column-right">
+        <dl id="news1">
+
+            <dd>
+                @*<h2 class="sub-header"></h2>
+                    <div class="table-responsive">*@
                 <input type="hidden" id="userId" value="@ViewBag.uid" />
                 <table class="table table-striped">
                     <tr>
@@ -143,76 +154,91 @@
                             <input type="text" id="memberAdress" name="memberAdress" readOnly="true" value="@Model.CustomerInfo.Adress" />
                         </td>
                     </tr>
-                </table><br />
-                </div>
-                <input type="button" ID="btnModiInfo" value="修改信息" onclick="javascript: modiInfo();" />
-                <input type="button" ID="btnModiPWD" value="修改密码" onclick="javascript: modiPWD();" /><br /><br />
-            
-                <form id="baseInfo" class="col-md-12" asp-controller="Home" asp-action="MemberHome" method="post">
-                    <div id="pwdBlk" style="display:@ViewBag.pwdDisp">
-                        <div asp-validation-summary="All" class="text-danger"></div>
-                        <div class="form-group" style="font:100">
-                            <label asp-for="OldPassword" class="col-md-5 control-label text-right"></label>
-                            <div class="col-md-7 text-left">
-                                <input asp-for="OldPassword" class="form-control" />
-                                <span asp-validation-for="OldPassword" class="text-danger"></span>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label asp-for="NewPassword" class="col-md-5 control-label text-right"></label>
-                            <div class="col-md-7 text-left">
-                                <input asp-for="NewPassword" class="form-control" />
-                                <span asp-validation-for="NewPassword" class="text-danger"></span>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label asp-for="ConfirmPassword" class="col-md-5 control-label text-right"></label>
-                            <div class="col-md-7 text-left">
-                                <input asp-for="ConfirmPassword" class="form-control" />
-                                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-md-10">
-                                <button type="submit" class="btn btn-default">提交新密码</button>
-                            </div>
+                </table>
+            </dd>
+            <br />
+
+            <input type="button" ID="btnModiInfo" class="fullBtnBlue" value="修改信息" onclick="javascript: modiInfo();" />
+            <div class="grzx-an">
+                <input type="button" ID="btnModiPWD" class="fullBtnBlue" value="修改密码" onclick="javascript: modiPWD();" />
+            </div>
+            <br />
+
+
+
+
+            <form id="baseInfo" class="col-md-12" asp-controller="Home" asp-action="MemberHome" method="post">
+                <div id="pwdBlk" style="display:@ViewBag.pwdDisp">
+                    <div asp-validation-summary="All" class="text-danger"></div>
+                    <div class="form-group" style="font:100">
+                        <label asp-for="OldPassword" class="col-md-5 control-label text-right"></label>
+                        <div class="col-md-7 text-left">
+                            <input asp-for="OldPassword" class="form-control" />
+                            <span asp-validation-for="OldPassword" class="text-danger"></span>
                         </div>
                     </div>
-                </form>
-            @*<div id="#new2" class="table-responsive">*@
-                @*<td style="vertical-align:top;">*@
-                    <h3>订单一览</h3>
-                    <table border="1" style="border-width:1px;border-collapse:collapse;width:100%;">
+                    <div class="form-group">
+                        <label asp-for="NewPassword" class="col-md-5 control-label text-right"></label>
+                        <div class="col-md-7 text-left">
+                            <input asp-for="NewPassword" class="form-control" />
+                            <span asp-validation-for="NewPassword" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ConfirmPassword" class="col-md-5 control-label text-right"></label>
+                        <div class="col-md-7 text-left">
+                            <input asp-for="ConfirmPassword" class="form-control" />
+                            <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-10">
+                            <button type="submit" class="btn btn-default">提交新密码</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </dl>
+        @*<div id="#new2" class="table-responsive">*@
+        @*<td style="vertical-align:top;">*@
+        <dl id="news2">
+
+            <dd>
+                <table border="1" style="border-width:1px;border-collapse:collapse;width:100%;">
+                    <tr>
+                        <th>订单时间</th>
+                        <th>收件人姓名</th>
+                        <th>商品</th>
+                        <th>图片</th>
+                        @*<th>金额</th>*@<!--金额有问题-->
+                        @*<th>付款时间</th>*@
+                        <th>订单状态</th>
+                    </tr>
+                    @foreach (var cartItem in Model.Orders)
+            {
                         <tr>
-                            <th>订单时间</th>
-                            <th>收件人姓名</th>
-                            <th>商品</th>
-                            <th>图片</th>
-                            @*<th>金额</th>*@<!--金额有问题-->
-                            @*<th>付款时间</th>*@
-                            <th>订单状态</th>
+                            <td>@cartItem.orderTime.ToString()</td>
+                            <td>@cartItem.name</td>
+                            <td>@cartItem.productName</td>
+                            <td><img src="/images/@cartItem.product_Img" style="width:120px;height:120px" /></td>
+                            @*<td>@cartItem.amount</td>*@
+                            @*<td>@cartItem.transTime</td>*@
+                            <td>@cartItem.orderState</td>
                         </tr>
-                        @foreach (var cartItem in Model.Orders)
-                        {
-                            <tr>
-                                <td>@cartItem.orderTime.ToString()</td>
-                                <td>@cartItem.name</td>
-                                <td>@cartItem.productName</td>
-                                <td><img src="/images/@cartItem.product_Img" style="width:120px;height:120px" /></td>
-                                @*<td>@cartItem.amount</td>*@
-                                @*<td>@cartItem.transTime</td>*@
-                                <td>@cartItem.orderState</td>
-                            </tr>
-                        }
-                    </table>
-                    @*<div page-model="@Model.PagingInfo" page-action="MemberHome"></div>*@
-                @*</td>*@
-                    @*</div>*@
-                @*</tr>
-                </table>*@
-            @*</div>*@
+                    }
+                </table>
+            </dd>
+        </dl>
+    </article>
+</div>
+@*<div page-model="@Model.PagingInfo" page-action="MemberHome"></div>*@
+@*</td>*@
+@*</div>*@
+@*</tr>
+    </table>*@
+@*</div>*@
 
 
 
-    @*</div>*@
+@*</div>*@
 @*</div>*@

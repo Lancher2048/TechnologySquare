@@ -2,18 +2,120 @@
     ViewBag.Title = "商品分类";
     Layout = "_Layout";
 }
-<p>商品类别:@ViewBag.catalogName</p>
 
-<div class="container" style="padding: 0;">
-    <div class="row" style="margin:  0;">
-        @foreach (ProductList p1 in ViewBag.catProducts as List<ProductList>)
-        {
-            <div class="browse-item col-md-3 col-sm-3 col-xs-6" style="margin: 10px 0;">
-                <a href='/Home/Detail/@p1.p.ObjId'><img src="~/images/@p1.p.Product_Img" /></a>
-                <p>@p1.p.Productname</p>
-                <p>¥@p1.p.Price</p>
-                <a type="button" href="/Cart/AddCart/@p1.p.ObjId">购买</a>
-            </div>
-        }
-    </div>
+<link type="text/css" rel="stylesheet" href="~/css/Browse.css" />
+<link href="~/css/text.css" rel="stylesheet" type="text/css" />
+
+<table width="1194" align="center">
+    <tr>
+        <th height="95"> </th>
+    </tr>
+</table>
+<hr>
+
+
+<div style="text-align:center;clear:both;">
+    <script src="/gg_bd_ad_720x90.js" type="text/javascript"></script>
+    <script src="/follow.js" type="text/javascript"></script>
 </div>
+
+<p>&nbsp;</p>
+<table cellspacing="15" align="center">
+    <tr>
+        <td width="238" height="924" valign="top">
+            <!--侧边导航栏-->
+            <table width="238" height="742" border="0">
+                <tr><td height="140"></td></tr>
+                <tr>
+                    <th width="232" height="431">
+
+
+                        <div class="divcss5"><p>移动手机</p></div>
+                        <ul>
+                            <li class="li_style"><a href='~/Home/Browse?typeId=1&typeName=苹果手机'>苹果手机</a></li>
+                            <li class="li_style"><a href='~/Home/Browse?typeId=2&typeName=微软手机'>微软手机</a></li>
+                            <li class="li_style"><a href='~/Home/Browse?typeId=3&typeName=小米手机'>小米手机</a></li>
+                        </ul>
+                        <div class="divcss5"><p>平板电脑</p></div>
+                        <ul>
+                            <li class="li_style"><a href="~/Home/Browse?typeId=4&typeName=苹果ipad">苹果ipad</a></li>
+                            <li class="li_style"><a href="~/Home/Browse?typeId=5&typeName=华为平板">华为</a></li>
+                            <li class="li_style"><a href="~/Home/Browse?typeId=6&typeName=小米平板">小米</a></li>
+                        </ul>
+                        <div class="divcss5"><p>周边配件</p></div>
+                        <ul>
+                            <li class="li_style"><a href="~/Home/Browse?typeId=8&typeName=耳机">耳机/音响</a></li>
+                            <li class="li_style"><a href="~/Home/Browse?typeId=9&typeName=手环">手环</a></li>
+                            <li class="li_style"><a href="~/Home/Browse?typeId=7&typeName=移动电源">移动电源</a></li>
+                        </ul>
+
+
+
+
+
+                    </th>
+                </tr>
+                <tr>
+                    <th height="100">&nbsp;</th>
+                </tr>
+                <tr>
+                    <th height="100">&nbsp;</th>
+                </tr>
+                <tr>
+                    <th height="100">&nbsp;</th>
+                </tr>
+            </table>
+
+        </td>
+        <td width="931" valign="top">
+
+            <table width="887">
+                <tr>
+                    <td height="33" colspan="2">
+                        <div><h1 class="q">商品类别:@ViewBag.catalogName</h1></div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <div class="container" style="padding: 0;">
+                            <div class="row" style="margin:  0;">
+                                @foreach (ProductList p1 in ViewBag.catProducts as List<ProductList>)
+                                {
+                                    <div class="browse-item col-md-3 col-sm-3 col-xs-6" style="margin: 10px 0;">
+                                        <div style="width:300px; height:300px; position:relative; padding-bottom:300px; height:0;">
+                                            <a href='/Home/Detail/@p1.p.ObjId'><img src="~/images/@p1.p.Product_Img" style="width:100%; height:100%; position:absolute;" /></a>
+                                        </div>
+
+                                        <h1 class="p">
+                                            @p1.p.Productname
+                                        </h1>
+                                        <h1 class="d">
+                                            ¥@p1.p.Price
+                                        </h1>
+                                        <div class="nobdr-btns">
+                                            <a type="button" class="addcart hu" href="/Cart/AddCart/@p1.p.ObjId"><img src="~/images/img_Bowse/shop.png" width="25" height="25" />购买</a>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+
+            </table>
+
+        </td>
+    </tr>
+</table>
+
+<script src="~/js/Detail.js" type="text/javascript"></script>
+
+
+<style type="text/css">
+    <!--
+    .STYLE2 {
+        font-size: 16px;
+    }
+    -->
+</style>
